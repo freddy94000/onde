@@ -9,9 +9,9 @@ trait SluggableTrait
 {
     #[Gedmo\Slug(fields: ['name'])]
     #[ORM\Column(length: 255, unique: true)]
-    private ?string $slug = null;
+    private ?string $slug;
 
-    public function getSlug(): ?string
+    public function getSlug(): string
     {
         return $this->slug;
     }

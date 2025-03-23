@@ -14,21 +14,21 @@ class District
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?City $city = null;
+    private City $city;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -40,12 +40,12 @@ class District
         return $this;
     }
 
-    public function getCity(): ?City
+    public function getCity(): City
     {
         return $this->city;
     }
 
-    public function setCity(?City $city): static
+    public function setCity(City $city): static
     {
         $this->city = $city;
 

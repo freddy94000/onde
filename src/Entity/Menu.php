@@ -11,13 +11,13 @@ class Menu
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column]
-    private ?int $menuOrder = null;
+    private int $menuOrder;
 
     #[ORM\ManyToOne(targetEntity: self::class)]
     private ?self $parent = null;
@@ -31,12 +31,12 @@ class Menu
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $path = null;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -48,7 +48,7 @@ class Menu
         return $this;
     }
 
-    public function getMenuOrder(): ?int
+    public function getMenuOrder(): int
     {
         return $this->menuOrder;
     }

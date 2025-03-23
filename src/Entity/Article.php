@@ -23,13 +23,13 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $content = null;
+    private string $content;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $startAt = null;
@@ -38,11 +38,11 @@ class Article
     private ?\DateTimeInterface $endAt = null;
 
     #[ORM\Column(enumType: TypeArticle::class)]
-    private ?TypeArticle $type = null;
+    private TypeArticle $type;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    private Category $category;
 
     /**
      * @var Collection<int, Tag>
@@ -60,19 +60,19 @@ class Article
     private ?City $city = null;
 
     #[ORM\Column(enumType: Island::class)]
-    private ?Island $island = null;
+    private Island $island;
 
     public function __construct()
     {
         $this->tags = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -84,7 +84,7 @@ class Article
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent(): string
     {
         return $this->content;
     }
@@ -120,7 +120,7 @@ class Article
         return $this;
     }
 
-    public function getType(): ?TypeArticle
+    public function getType(): TypeArticle
     {
         return $this->type;
     }
@@ -132,12 +132,12 @@ class Article
         return $this;
     }
 
-    public function getCategory(): ?Category
+    public function getCategory(): Category
     {
         return $this->category;
     }
 
-    public function setCategory(?Category $category): static
+    public function setCategory(Category $category): static
     {
         $this->category = $category;
 
@@ -204,7 +204,7 @@ class Article
         return $this;
     }
 
-    public function getIsland(): ?Island
+    public function getIsland(): Island
     {
         return $this->island;
     }
