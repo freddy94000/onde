@@ -23,3 +23,7 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+###> jetBrains/phpStorm ###
+.idea
+###< jetBrains/phpStorm ###
