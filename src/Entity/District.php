@@ -23,6 +23,13 @@ class District
     #[ORM\JoinColumn(nullable: false)]
     private City $city;
 
+    #[ORM\ManyToOne]
+    private ?Island $island = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private Country $country;
+
     public function getId(): int
     {
         return $this->id;
@@ -48,6 +55,30 @@ class District
     public function setCity(City $city): static
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getIsland(): ?Island
+    {
+        return $this->island;
+    }
+
+    public function setIsland(?Island $island): static
+    {
+        $this->island = $island;
+
+        return $this;
+    }
+
+    public function getCountry(): Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(Country $country): static
+    {
+        $this->country = $country;
 
         return $this;
     }

@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Entity\Traits\SluggableTrait;
-use App\Enum\Island;
 use App\Repository\PlaceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -35,8 +34,12 @@ class Place
     #[ORM\ManyToOne]
     private ?City $city = null;
 
-    #[ORM\Column(enumType: Island::class)]
-    private Island $island;
+    #[ORM\ManyToOne]
+    private ?Island $island = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private Country $country;
 
     public function getId(): int
     {
@@ -115,14 +118,26 @@ class Place
         return $this;
     }
 
-    public function getIsland(): Island
+    public function getIsland(): ?Island
     {
         return $this->island;
     }
 
-    public function setIsland(Island $island): static
+    public function setIsland(?Island $island): static
     {
         $this->island = $island;
+
+        return $this;
+    }
+
+    public function getCountry(): Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(Country $country): static
+    {
+        $this->country = $country;
 
         return $this;
     }

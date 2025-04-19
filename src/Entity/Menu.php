@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\TypeMenu;
 use App\Repository\MenuRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,6 +31,15 @@ class Menu
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $path = null;
+
+    #[ORM\Column(enumType: TypeMenu::class)]
+    private TypeMenu $type;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $icon = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $url = null;
 
     public function getId(): int
     {
@@ -104,6 +114,42 @@ class Menu
     public function setPath(?string $path): static
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function getType(): TypeMenu
+    {
+        return $this->type;
+    }
+
+    public function setType(TypeMenu $type): static
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): static
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): static
+    {
+        $this->url = $url;
 
         return $this;
     }

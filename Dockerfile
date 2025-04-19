@@ -1,11 +1,13 @@
 FROM php:8.3-fpm
 
-RUN apt-get update && apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev
+RUN apt-get update && apt-get install -y libmcrypt-dev libicu-dev
 
-RUN docker-php-ext-install opcache
-RUN pecl install apcu
-RUN docker-php-ext-enable apcu
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
+RUN apt install symfony-cli -y
+
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install pdo intl
 
 COPY php.ini /usr/local/etc/php/php.ini

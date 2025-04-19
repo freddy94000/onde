@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Entity\Traits\SluggableTrait;
-use App\Enum\Island;
 use App\Enum\TypeArticle;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -59,8 +58,11 @@ class Article
     #[ORM\ManyToOne]
     private ?City $city = null;
 
-    #[ORM\Column(enumType: Island::class)]
-    private Island $island;
+    #[ORM\ManyToOne]
+    private ?Island $island = null;
+
+    #[ORM\ManyToOne]
+    private ?Country $country = null;
 
     public function __construct()
     {
@@ -204,14 +206,26 @@ class Article
         return $this;
     }
 
-    public function getIsland(): Island
+    public function getIsland(): ?Island
     {
         return $this->island;
     }
 
-    public function setIsland(Island $island): static
+    public function setIsland(?Island $island): static
     {
         $this->island = $island;
+
+        return $this;
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): static
+    {
+        $this->country = $country;
 
         return $this;
     }

@@ -2,6 +2,16 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Article;
+use App\Entity\Category;
+use App\Entity\City;
+use App\Entity\Comment;
+use App\Entity\District;
+use App\Entity\Menu;
+use App\Entity\Page;
+use App\Entity\Place;
+use App\Entity\Tag;
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -13,7 +23,7 @@ class DashboardController extends AbstractDashboardController
 {
     public function index(): Response
     {
-        return parent::index();
+        return $this->redirectToRoute('admin_category_index');
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
@@ -44,7 +54,18 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::section('CMS');
+        yield MenuItem::linkToCrud('Menu', 'fas fa-bars', Menu::class);
+        yield MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class);
+        yield MenuItem::linkToCrud('Tags', 'fas fa-tags', Tag::class);
+        yield MenuItem::linkToCrud('Articles', 'fas fa-newspaper', Article::class);
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-message', Comment::class);
+        yield MenuItem::section('Localisation');
+        yield MenuItem::linkToCrud('Lieux', 'fas fa-map-pin', Place::class);
+        yield MenuItem::linkToCrud('Zones', 'fas fa-location-dot', District::class);
+        yield MenuItem::linkToCrud('Villes', 'fas fa-map-location-dot', City::class);
+        yield MenuItem::section('Site');
+        yield MenuItem::linkToCrud('Pages', 'fas fa-file', Page::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);
     }
 }

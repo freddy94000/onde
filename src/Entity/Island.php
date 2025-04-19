@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use App\Entity\Traits\SluggableTrait;
-use App\Repository\CityRepository;
+use App\Repository\IslandRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CityRepository::class)]
-class City
+#[ORM\Entity(repositoryClass: IslandRepository::class)]
+class Island
 {
     use SluggableTrait;
 
@@ -18,9 +18,6 @@ class City
 
     #[ORM\Column(length: 255)]
     private string $name;
-
-    #[ORM\ManyToOne]
-    private ?Island $island = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -39,18 +36,6 @@ class City
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getIsland(): ?Island
-    {
-        return $this->island;
-    }
-
-    public function setIsland(?Island $island): static
-    {
-        $this->island = $island;
 
         return $this;
     }

@@ -1,0 +1,45 @@
+id;type;name;parent;order;page;category;path;url;icon
+1;principal;Accueil;0;1;0;0;dashbord;0;house
+2;principal;Evénements;0;2;0;1;0;0;calendar
+3;principal;Soirées;2;1;0;1;0;0;0
+4;principal;Concerts;2;2;0;1;0;0;0
+5;principal;Festivals;2;3;0;1;0;0;0
+6;principal;Carnavals;2;4;0;1;0;0;0
+7;principal;Spectacles;2;5;0;1;0;0;0
+8;principal;Forums et Conférences;2;6;0;1;0;0;0
+9;principal;Fêtes Traditionnelles;2;7;0;1;0;0;0
+10;principal;Sportifs;2;8;0;1;0;0;0
+11;principal;Foires et Marchés;2;9;0;1;0;0;0
+12;principal;Activités;0;3;0;1;0;0;bicycle
+13;principal;Nautique et aquatique;12;1;0;1;0;0;0
+14;principal;Expositions;12;2;0;1;0;0;0
+15;principal;Excursion et circuits touristiques;12;3;0;1;0;0;0
+16;principal;Artisanat Local;12;4;0;1;0;0;0
+17;principal;Loisirs;12;5;0;1;0;0;0
+18;principal;Lieux;0;4;0;1;0;0;pin-map
+19;principal;Discothèque, Lounge, Bar et chicha;18;1;0;1;0;0;0
+20;principal;Restauration;18;2;0;1;0;0;0
+21;principal;Sites naturels et paysage;18;3;0;1;0;0;0
+22;principal;Villages;18;4;0;1;0;0;0
+23;principal;Sites touristiques;18;5;0;1;0;0;0
+24;principal;Musées;18;6;0;1;0;0;0
+25;principal;Commerces;18;7;0;1;0;0;0
+26;principal;Prestataires et services;0;5;0;1;0;0;truck
+27;principal;Hébergements;26;1;0;1;0;0;0
+28;principal;Transports;26;2;0;1;0;0;0
+29;principal;Locations;26;3;0;1;0;0;0
+30;principal;Touristique;26;4;0;1;0;0;0
+31;principal;Informations utiles;0;6;0;1;0;0;info-circle
+32;principal;Blog;0;7;0;1;0;0;bootstrap
+33;principal;Actualités;0;8;0;1;0;0;newspaper
+34;legal;Contactez-nous;0;1;0;0;contact;0;0
+35;legal;A propos de Onde;0;2;1;0;0;0;0
+36;legal;Mentions légales;0;3;2;0;0;0;0
+37;legal;Politique de confidentialité;0;4;3;0;0;0;0
+38;legal;Conditions générales d’utilisation;0;5;4;0;0;0;0
+39;legal;Conditions générales de vente;0;6;5;0;0;0;0
+40;legal;Sitemap;0;7;0;0;sitemap;0;0
+41;network;Facebook;0;1;0;0;0;https://www.facebook.com;facebook
+42;network;Instagram;0;2;0;0;0;https://www.instagram.com;instagram
+43;network;Youtube;0;3;0;0;0;https://www.youtube.com;youtube
+44;network;TikTok;0;4;0;0;0;https://www.tiktok.com;tiktok
