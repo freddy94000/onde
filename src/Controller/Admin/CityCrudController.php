@@ -3,9 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\City;
-use App\Enum\Island;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CityCrudController extends AbstractCrudController
@@ -18,10 +21,17 @@ class CityCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            ChoiceField::new('island')
-                ->setChoices(Island::cases())
-                ->renderExpanded(),
+            AssociationField::new('island')->setCrudController(IslandCrudController::class),
+            AssociationField::new('country')->setCrudController(CountryCrudController::class),
         ];
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        $actions = parent::configureActions($actions);
+        $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
+        return $actions;
     }
 }

@@ -19,14 +19,14 @@ class Place
     #[ORM\Column(length: 255)]
     private string $name;
 
-    #[ORM\Column(length: 255)]
-    private string $address;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $address = null;
 
-    #[ORM\Column]
-    private float $latitude;
+    #[ORM\Column(nullable: true)]
+    private ?float $latitude = null;
 
-    #[ORM\Column]
-    private float $longitude;
+    #[ORM\Column(nullable: true)]
+    private ?float $longitude = null;
 
     #[ORM\ManyToOne]
     private ?District $district = null;
@@ -58,36 +58,36 @@ class Place
         return $this;
     }
 
-    public function getAddress(): string
+    public function getAddress(): ?string
     {
         return $this->address;
     }
 
-    public function setAddress(string $address): static
+    public function setAddress(?string $address): static
     {
         $this->address = $address;
 
         return $this;
     }
 
-    public function getLatitude(): float
+    public function getLatitude(): ?float
     {
         return $this->latitude;
     }
 
-    public function setLatitude(float $latitude): static
+    public function setLatitude(?float $latitude): static
     {
         $this->latitude = $latitude;
 
         return $this;
     }
 
-    public function getLongitude(): float
+    public function getLongitude(): ?float
     {
         return $this->longitude;
     }
 
-    public function setLongitude(float $longitude): static
+    public function setLongitude(?float $longitude): static
     {
         $this->longitude = $longitude;
 
@@ -140,5 +140,14 @@ class Place
         $this->country = $country;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name . ' (' .
+            (isset($this->district) ? $this->district->getName() . ' - ' : '') .
+            (isset($this->city) ? $this->city->getName() . ' - ' : '') .
+            (isset($this->island) ? $this->island->getName() . ' - ' : '') .
+            $this->country->getName() . ')';
     }
 }

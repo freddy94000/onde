@@ -6,7 +6,9 @@ use App\Entity\Article;
 use App\Entity\Category;
 use App\Entity\City;
 use App\Entity\Comment;
+use App\Entity\Country;
 use App\Entity\District;
+use App\Entity\Island;
 use App\Entity\Menu;
 use App\Entity\Page;
 use App\Entity\Place;
@@ -64,6 +66,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Lieux', 'fas fa-map-pin', Place::class);
         yield MenuItem::linkToCrud('Zones', 'fas fa-location-dot', District::class);
         yield MenuItem::linkToCrud('Villes', 'fas fa-map-location-dot', City::class);
+        yield MenuItem::linkToCrud('Iles', 'fas fa-mountain-sun', Island::class);
+        yield MenuItem::linkToCrud('Pays', 'fas fa-earth-americas', Country::class);
         yield MenuItem::section('Site');
         yield MenuItem::linkToCrud('Pages', 'fas fa-file', Page::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-users', User::class);

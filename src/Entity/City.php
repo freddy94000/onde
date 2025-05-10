@@ -66,4 +66,11 @@ class City
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->name . ' (' .
+            (isset($this->island) ? $this->island->getName() . ' - ' : '') .
+            $this->country->getName() . ')';
+    }
 }

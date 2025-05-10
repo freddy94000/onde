@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Page;
+use App\Entity\Country;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -11,19 +11,19 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class PageCrudController extends AbstractCrudController
+class CountryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Page::class;
+        return Country::class;
     }
+
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
-            TextEditorField::new('content')->hideOnIndex(),
         ];
     }
 
