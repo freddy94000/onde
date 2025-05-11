@@ -8,6 +8,7 @@ RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | b
 RUN apt install symfony-cli -y
 
 RUN docker-php-ext-configure intl
-RUN docker-php-ext-install pdo intl
+RUN docker-php-ext-install mysqli pdo pdo_mysql intl
+RUN docker-php-ext-enable pdo_mysql
 
 COPY php.ini /usr/local/etc/php/php.ini
